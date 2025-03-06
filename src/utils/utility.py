@@ -1,7 +1,19 @@
 from bs4 import BeautifulSoup, Tag
+
 import configparser
 import requests
-import os
+import yfinance as yf
+
+
+period = "1d"
+interval = "1m"
+
+
+def save_parquet_data(stocks_list: list):
+    for stock in stocks_list:
+        stock = yf.Ticker(stock)
+        intraday_data = stock.history(period=period, interval=interval)
+        print(intraday_data)
 
 
 def yahoo_web_request(url) -> Tag:
