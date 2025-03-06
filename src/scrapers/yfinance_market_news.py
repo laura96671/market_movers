@@ -1,8 +1,8 @@
 import re
 
 from bs4 import Tag
-from utils.utility import yahoo_web_request
-from yfinance_market_screener import get_yfinance_screener_data
+from src.utils.utility import yahoo_web_request
+from src.scrapers.yfinance_market_screener import get_yfinance_screener_data
 
 
 def get_stock_news(ticker: str):
@@ -32,5 +32,3 @@ def get_stock_news(ticker: str):
     df_stocks = get_yfinance_screener_data()
     idx = df_stocks[df_stocks['stock_symbol'] == ticker].index.item()
     df_stocks.loc[idx, 'news'] = [news_list]
-
-    return df_stocks

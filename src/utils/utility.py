@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup, Tag
 import configparser
 import requests
+import os
 
 
 def yahoo_web_request(url) -> Tag:
@@ -11,7 +12,7 @@ def yahoo_web_request(url) -> Tag:
     print(f"Started webpage HTML snippets retrieval of {url}...")
 
     config = configparser.ConfigParser()
-    headers = {'User-Agent': str(config["BROWSER_REQUEST"])}
+    headers = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"}
 
     try:
         request = requests.get(url, headers=headers)

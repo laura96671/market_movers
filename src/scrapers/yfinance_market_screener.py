@@ -1,4 +1,4 @@
-from utils.utility import yahoo_web_request
+from src.utils.utility import yahoo_web_request
 import pandas as pd
 
 
