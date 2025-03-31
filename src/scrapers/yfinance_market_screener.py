@@ -34,8 +34,8 @@ def get_yfinance_screener_data() -> pd.DataFrame:
             float(row.find("fin-streamer", attrs={'data-field': 'regularMarketPrice'}).text)
         )
         real_time_data["stock_pct_change"].append(
-            float(row.find("fin-streamer", attrs={'data-field': 'regularMarketChangePercent'}).text
-                  .translate(str.maketrans({"(": "", "%": "", ")": ""})))
+            row.find("fin-streamer", attrs={'data-field': 'regularMarketChangePercent'}).text
+                  .translate(str.maketrans({"(": "", "%": "", ")": ""}))
         )
         real_time_data["stock_volume"].append(
             row.find("fin-streamer", attrs={'data-field': 'regularMarketVolume'}).text

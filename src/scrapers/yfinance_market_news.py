@@ -29,6 +29,5 @@ def get_stock_news(ticker: str):
             else:
                 break
 
-    df_stocks = get_yfinance_screener_data()
-    idx = df_stocks[df_stocks['stock_symbol'] == ticker].index.item()
-    df_stocks.loc[idx, 'news'] = [news_list]
+    return {"ticker": ticker,
+            "news_list": news_list}
